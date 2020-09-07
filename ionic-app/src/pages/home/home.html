@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Product Information
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngIf="productDetail">
+    <ion-card-header>
+      <ion-item>
+        <ion-label>
+          <h3>#{{ productDetail.id }}</h3>
+        </ion-label>
+      </ion-item>
+      <ion-card-title>{{ productDetail.name }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div style="width:200px">
+        <img
+          width="200"
+          onerror="this.src='../../assets/imgs/no-image.jpg'"
+          src="{{ productDetail.image }}"
+        />
+      </div>
+      <p><label>SKU:</label>{{ productDetail.sku }}</p>
+      <p><label>Quantity:</label>{{ productDetail.quantity }}</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="!productDetail">
+    <ion-card-header>
+      <ion-card-title>No Product Information.</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+</ion-content>
+<ion-footer>
+  <ion-row>
+    <ion-col center text-center>
+      <button ion-button expand="block" (click)="showCamera()">
+        Scan Product
+      </button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

@@ -1,0 +1,9 @@
+page-home {
+}
+
+ion-app.has-camera,
+ion-app.has-camera ion-content {
+  --background: transparent;
+  background: transparent !important;
+  opacity: 0;
+}

@@ -1,0 +1,79 @@
+#Fragments
+fragment ProductsFields on Product {
+  id
+  name
+  sku
+  quantity
+  image
+  category_id
+  sub_category_id  
+}
+
+fragment ProductCategoryFields on ProductCategory {
+  id
+  parent_id
+  name 
+}
+
+#Queries
+query getProducts {
+  products {
+    ...ProductsFields
+  }
+}
+
+
+query getCategories($parent_id: Int!) {
+  product_category(parent_id: $parent_id){
+    ...ProductCategoryFields
+  }
+}
+
+query getSubCategories($parent_id: Int!) {
+  product_sub_category(parent_id: $parent_id){
+    ...ProductCategoryFields
+  }
+}
+
+query getProduct($id: ID!) {
+  product (id: $id){
+    ...ProductsFields
+  }
+}
+
+#Mutations
+
+mutation createProduct($name: String!, $quantity: Int!, $sku: String, $category_id : Int, $sub_category_id: Int, $image: Upload) {
+    createProduct(
+        input: { name: $name, quantity: $quantity, sku: $sku, category_id:$category_id, sub_category_id:$sub_category_id, image: $image }
+    ) {
+        id
+        name
+        quantity
+        sku
+        category_id
+        sub_category_id
+        image
+    }
+}
+
+
+
+mutation updateProduct($id: ID!,$name: String!, $quantity: Int!, $sku: String, $category_id : Int, $sub_category_id: Int, $image: Upload) {
+  updateProduct(id: $id, input: { name: $name, quantity: $quantity, sku: $sku, category_id:$category_id, sub_category_id:$sub_category_id, image: $image }
+) {
+     id
+        name
+        quantity
+        sku
+        category_id
+        sub_category_id
+        image
+  }
+}
+
+mutation deleteProduct($id: ID!) {
+  deleteProduct(id: $id){
+    id
+  }
+}

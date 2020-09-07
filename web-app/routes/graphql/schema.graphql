@@ -1,0 +1,56 @@
+scalar Upload
+@scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Upload")
+scalar DateTime
+@scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
+
+type Query {
+    product(id: ID! @eq): Product @find
+    products: [Product!]! @all
+    product_category(parent_id: Int! @eq): [ProductCategory!]! @all
+    product_sub_category(parent_id: Int! @eq): [ProductCategory!]! @all
+}
+
+input ProductInput {
+    id:ID
+    name: String!
+    quantity: Int
+    sku: String
+    category_id: Int
+    sub_category_id:Int
+    created_at: DateTime
+    updated_at: DateTime
+    image:Upload
+}
+
+
+type Mutation {   
+
+    createProduct(input: ProductInput! @spread): Product
+    updateProduct(id: ID!, input: ProductInput! @spread): Product      
+ 
+
+    deleteProduct(
+        id: ID! @rules(apply: ["required"])
+    ): Product @delete(model: "App\\Product")
+}
+
+
+type ProductCategory {
+    id: ID!
+    parent_id:Int
+    name: String!    
+}
+
+
+type Product {
+    id: ID!
+    name: String!  
+    quantity: Int
+    sku: String
+    category_id: Int
+    sub_category_id:Int
+    created_at: DateTime!
+    updated_at: DateTime!
+    image:String
+}

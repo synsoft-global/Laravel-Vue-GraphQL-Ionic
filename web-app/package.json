@@ -1,0 +1,36 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "watch": "npm run development -- --watch",
+        "watch-poll": "npm run watch -- --watch-poll",
+        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "prod": "npm run production",
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    },
+    "devDependencies": {
+        "apollo-cache-inmemory": "^1.4.3",
+        "apollo-client": "^2.4.13",
+        "apollo-link": "^1.2.8",
+        "apollo-link-error": "^1.1.7",
+        "apollo-link-http": "^1.5.11",
+        "axios": "^0.18",
+        "cross-env": "^5.1",
+        "graphql": "^14.1.1",
+        "graphql-tag": "^2.10.1",
+        "laravel-mix": "^4.0.14",
+        "vee-validate": "^2.1.7",
+        "vue": "^2.6.12",
+        "vue-apollo": "^3.0.0-beta.28",
+        "vue-router": "^3.0.2",
+        "vue-template-compiler": "^2.6.6",
+        "vuetify": "^1.5.24"
+    },
+    "dependencies": {
+        "@chenfengyuan/vue-qrcode": "^1.0.2",
+        "apollo-boost": "^0.4.9",
+        "apollo-upload-client": "^14.1.1",
+        "bootstrap-vue": "^2.16.0"
+    }
+}

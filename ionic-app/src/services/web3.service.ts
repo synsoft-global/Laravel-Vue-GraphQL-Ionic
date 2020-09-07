@@ -40,7 +40,6 @@ export class Web3Service {
   }
 
   public async artifactsToContract(artifacts) {
-    console.log(window.web3);
 
     if (!this.web3) {
       const delay = new Promise(resolve => setTimeout(resolve, 100));
@@ -48,23 +47,8 @@ export class Web3Service {
       return await this.artifactsToContract(artifacts);
     }
 
-    //0xdf7e44627ce2c26fc489a1027a711bd22486f305
-
-    //const contractAbstraction = TruffleContract(artifacts);
-   // contractAbstraction.setProvider(this.web3.currentProvider);
-    //return contractAbstraction;
-
-    const contract = new this.web3.eth.Contract(artifacts.abi, "0xdf7e44627ce2c26fc489a1027a711bd22486f305")
-    const val = await contract.methods.registerScan(
-      1,
-      "memoryName",
-      2,
-      "cat",
-      "subCat",
-      "img",
-      "sku",
-      "deviceid"
-      ).call();
-    console.log(val);
+    const contractAbstraction = TruffleContract(artifacts);
+    contractAbstraction.setProvider(this.web3.currentProvider);
+    return contractAbstraction;
   }
 }

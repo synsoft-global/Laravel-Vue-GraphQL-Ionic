@@ -277,7 +277,7 @@ export default {
         },
 
         deleteItem (item) {
-          if (confirm('Are you sure you want to delete this item?'))
+          if (confirm('Are you sure you want to delete this product?'))
           {
 
             this.$apollo.mutate({
@@ -294,7 +294,7 @@ export default {
               }
             })
             .then(() => {
-              this.notify('The products was deleted successfully', 'success')
+              this.notify('Product deleted successfully', 'success')
             })
             .catch((error) => {
               console.error({error})
@@ -336,7 +336,7 @@ export default {
                   }
                 })
                 .then(() => {
-                  this.notify('The product was modified successfully', 'success')
+                  this.notify('Product modified successfully', 'success')
                 })
                 .catch(error => {
                   this.notify('There was an error editting the product', 'danger')
@@ -366,7 +366,7 @@ export default {
                   },
                 })
                 .then(() => {
-                  this.notify('The product was added successfully', 'success')
+                  this.notify('Product added successfully', 'success')
                 })
                 .catch(error => {
                   this.notify('There was an error adding the product', 'danger')
